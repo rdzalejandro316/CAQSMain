@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="283.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caqs_blackList.ControllerBlackList">
+    <children>
+      <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="12.0" layoutY="12.0">
+         <image>
+            <Image url="@../caqs_login/imagenes/izq.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="80.0" layoutY="20.0" text="Lista negra">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Label>
+      <TextField layoutX="24.0" layoutY="60.0" prefHeight="23.0" prefWidth="95.0" />
+      <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="191.0" layoutY="51.0">
+         <image>
+            <Image url="@../caqs_login/imagenes/candado.png" />
+         </image>
+      </ImageView>
+      <ScrollPane layoutX="43.0" layoutY="114.0" prefHeight="291.0" prefWidth="198.0">
+         <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="201.0">
+               <children>
+                  <Separator layoutX="58.0" layoutY="-16.0" orientation="VERTICAL" prefHeight="291.0" prefWidth="8.0" />
+                  <Separator layoutX="132.0" layoutY="-12.0" orientation="VERTICAL" prefHeight="283.0" prefWidth="4.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+    </children>
+   <opaqueInsets>
+      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+   </opaqueInsets>
+</AnchorPane>
