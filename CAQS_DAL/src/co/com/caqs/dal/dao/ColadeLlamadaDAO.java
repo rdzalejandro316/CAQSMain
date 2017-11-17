@@ -118,7 +118,7 @@ public class ColadeLlamadaDAO {
             Logger.getLogger(ColadeLlamadaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        System.out.println(lista);
+    
         return lista;
     }
     

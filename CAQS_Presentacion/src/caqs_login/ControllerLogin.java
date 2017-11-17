@@ -3,7 +3,10 @@ package caqs_login;
 import java.io.IOException;
 import servicio_login.LoginBL;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,20 +49,22 @@ public class ControllerLogin implements Initializable {
         boolean c = passField.getText().isEmpty();
 
         LoginBL pr = new LoginBL();
-        pr.verificarUsurio(usu, cont);
-
+        pr.verificarUsurio(usu, cont, lis);
+        
+        
         if (u) {
             cambio.setText("ingrese su usuario");
         }
         if (c) {
             cambio.setText("ingrese su contraseña");
         }
+        /*
         if (u && c) {
             cambio.setText("ingrese su usuario y cotraseña");
-        }
+        }*/
         
 
-        if (pr.verificarUsurio(usu, cont)) {
+        if (pr.verificarUsurio(usu, cont,lis)) {
             System.out.println("abrir ventana");
 
             if (lis == "especialista") {
@@ -73,11 +78,19 @@ public class ControllerLogin implements Initializable {
         }
 
     }
+    public List<String> listaTipoUsuario() throws Exception{
+        LoginBL BL = new LoginBL();
+        return BL.obtenerNombreLista();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        tipoUsuario.setItems(FXCollections.observableArrayList("agente", "especialista"));
+        try {
+            tipoUsuario.setItems(FXCollections.observableArrayList(listaTipoUsuario()));
+        } catch (Exception ex) {
+            Logger.getLogger(ControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -87,7 +100,7 @@ public class ControllerLogin implements Initializable {
     }*/
     private void MostrarMensaje() {
         cambio.setVisible(true);
-        cambio.setText("usuario y contraseña incorrecta");
+        cambio.setText("usuario ,contraseña o tipo de usuario incorrecto");
     }
 
     private void abrirVentanaColaLlamada() throws IOException {

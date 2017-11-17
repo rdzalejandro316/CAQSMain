@@ -15,7 +15,6 @@ public class ReportBL {
         InformeDAO dao = new InformeDAO();
         
         dao.registrarInforme(idInfo, nombreInfo, fecha, hora, descripcion, idUsu);
-        
     }
     
     public int SiguienteId(){

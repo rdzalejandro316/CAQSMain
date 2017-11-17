@@ -137,8 +137,6 @@ public class ControllerCallQueue implements Initializable {
 
         try {
             
-            
-
             //lis = (String) idListaNombre.getValue();
             //System.out.println(lis);
             idListaNombre.setItems(FXCollections.observableArrayList(mostrar()));

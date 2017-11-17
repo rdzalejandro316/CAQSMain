@@ -4,6 +4,7 @@ import co.com.caqs.dal.dao.UsuarioDAO;
 import co.com.caqs.dto.ColadeLlamadaDTO;
 import co.com.caqs.dto.UsuarioDTO;
 import java.util.List;
+import servicio_login.LoginBL;
 
 public class DemoUsuario {
 
@@ -39,8 +40,10 @@ public class DemoUsuario {
             }*/
            
 
-            //dao.consultarUsuario("juanAlex","juan01");
-             
+            //dao.consultarUsuario("alejo","alejo123","especialista");
+             //dao.listaTpoUsuario();
+             LoginBL BL = new LoginBL();
+             BL.obtenerNombreLista();
              
                     
         } catch (Exception e) {

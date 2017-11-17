@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UsuarioDAO {
 
@@ -102,14 +104,15 @@ public class UsuarioDAO {
         return lista;
     }
 
-    public boolean consultarUsuario(String usuarioDAO, String contraseñaDAO) throws Exception {
+    public boolean consultarUsuario(String usuarioDAO, String contraseñaDAO, String TipoUsuarioDAO) throws Exception {
 
         try {
-            PreparedStatement st = this.connect.prepareStatement("SELECT * FROM usuario WHERE usuario = ? AND contraseña_usuario = ?");
+            PreparedStatement st = this.connect.prepareStatement("SELECT * FROM usuario WHERE usuario = ? AND contraseña_usuario = ? AND tipo_de_usuario = ? ");
 
             st.setString(1, usuarioDAO);
             st.setString(2, contraseñaDAO);
-
+            st.setString(3, TipoUsuarioDAO);
+            
             ResultSet rs = st.executeQuery();
 
             boolean baderaDAO;
@@ -131,6 +134,25 @@ public class UsuarioDAO {
             throw e;
         }
 
+    }
+    
+    public List<String> listaTpoUsuario() {
+
+        List<String> lista = null;
+
+        lista = new ArrayList();
+
+        UsuarioDAO dao = new UsuarioDAO();
+
+        try {
+            for (UsuarioDTO c : dao.consultar()) {
+                lista.add(c.getTipoDeUsuario());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ColadeLlamadaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lista;
     }
 
 }

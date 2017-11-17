@@ -28,9 +28,9 @@ public class DemoLista {
             //dao.modificar(ls);
             //dao.eliminar(ls);
             //consulta de toda la entidad
-            for (ListaDTO ls : dao.consultar()) {
+            /*for (ListaDTO ls : dao.consultar()) {
                 System.out.println(ls.getIdTransferenciaFk().getNombreCliente());
-            }
+            }*/
             //consulta de nombre de las listas
             //dao.recorrer();
             //ConsultlistBL con = new ConsultlistBL();
@@ -48,11 +48,14 @@ public class DemoLista {
             //bl.siguienteId();
             //dao.registrarListaNueva(7, "prueba", null);
             //bl.obtenerListas();
-            //dao.recorrer2("compras");
+            
             
             //bl.verificarIngreso(10,"jm", null);
             */
-                
+            //PreparedStatement st = this.connect.prepareStatement("SELECT transferencia.nombre_cliente, transferencia.apellido_cliente, transferencia.direccion_cliente, transferencia.correo_cliente, transferencia.causa_llamada FROM lista INNER JOIN transferencia ON lista.id_lista = transferencia.id_transferencia WHERE lista.nombre_lista = ? ");          
+            //dao.recorrer2("ventas");
+            //dao.recorrer2("ventas");
+            
         } catch (Exception e) {
             System.out.println("error " + e.getMessage());
         }
