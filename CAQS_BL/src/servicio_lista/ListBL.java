@@ -23,12 +23,34 @@ public class ListBL {
         return lista;
 
     }
-    
-    public List<String> obtenerDatoslista(String nombreLista) {
-        
+
+    public List<String> obtenerNombreBL(String nombreLista) throws Exception {
         ListaDAO dao = new ListaDAO();
-        return dao.recorrer2(nombreLista);
-        
+        return dao.obtenerNombre(nombreLista);
+    }
+    
+    public List<String> obtenerApellidoBL(String nombreLista) throws Exception {
+        ListaDAO dao = new ListaDAO();
+        return dao.obtenerApellido(nombreLista);
+    }
+    
+    public List<String> obtenerDirreccionBL(String nombreLista) throws Exception {
+        ListaDAO dao = new ListaDAO();
+        return dao.obtenerDireccion(nombreLista);
     }
 
+    public List<String> obtenerCorreoBL(String nombreLista) throws Exception {
+        ListaDAO dao = new ListaDAO();
+        return dao.obtenerCorreo(nombreLista);
+    }
+    
+    public List<String> obtenerCausaBL(String nombreLista) throws Exception {
+        ListaDAO dao = new ListaDAO();
+        return dao.obtenerCausaLlamada(nombreLista);
+    }
+    
+    public List<Integer> obtenerPrioridadBL(String nombreLista) throws Exception {
+        ListaDAO dao = new ListaDAO();
+        return dao.obtenerPrioridad(nombreLista);
+    }
 }

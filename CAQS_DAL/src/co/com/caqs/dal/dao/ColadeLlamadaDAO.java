@@ -122,27 +122,29 @@ public class ColadeLlamadaDAO {
         return lista;
     }
     
-    public List<ColadeLlamadaDTO> consultarNumero(String NombreLista) throws Exception {
+    public List<ColadeLlamadaDTO> consultarNumero(String nombreLista) throws Exception {
         List<ColadeLlamadaDTO> lista = null;
         
             try { 
             PreparedStatement st = this.connect.prepareStatement("SELECT numero FROM cola_llamada WHERE nombre_colaLlamada = ?");
 
-            st.setString(1, NombreLista);
+            st.setString(1, nombreLista);
         
             lista = new ArrayList();
             
             ResultSet rs = st.executeQuery();
+            
             while (rs.next()) {
-                
                 ColadeLlamadaDTO cll = new ColadeLlamadaDTO();
                 LlamadaDTO lla = new LlamadaDTO();
 
                 lla.setNumero(rs.getString("numero"));
                 cll.setNumeroFk(lla);
+
                 lista.add(cll);
 
             }
+            
             rs.close();
             st.close();
             
@@ -164,12 +166,12 @@ public class ColadeLlamadaDAO {
         
         try {
             for (ColadeLlamadaDTO c : dao.consultarNumero(NombreLista)) {
-                System.out.println(c.getNumeroFk().getNumero());
+                lista.add(c.getNumeroFk().getNumero());
             }
         } catch (Exception ex) {
             Logger.getLogger(ColadeLlamadaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(lista);
+        System.out.println("----------"+lista);
         return lista;
     }
     

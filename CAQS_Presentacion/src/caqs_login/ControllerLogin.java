@@ -38,49 +38,47 @@ public class ControllerLogin implements Initializable {
     public String lis;
     public boolean ingreso;
 
+    public List<String> listaTipoUsuario() throws Exception {
+        LoginBL BL = new LoginBL();
+        return BL.obtenerNombreLista();
+    }
+
     @FXML
     private void handleButtonAction1(ActionEvent event) throws Exception {
 
         usu = usuario.getText();
         cont = passField.getText();
         lis = (String) tipoUsuario.getValue();
-
+        
         boolean u = usuario.getText().isEmpty();
         boolean c = passField.getText().isEmpty();
 
         LoginBL pr = new LoginBL();
-        pr.verificarUsurio(usu, cont, lis);
         
-        
+
         if (u) {
             cambio.setText("ingrese su usuario");
         }
         if (c) {
             cambio.setText("ingrese su contraseña");
         }
-        /*
-        if (u && c) {
-            cambio.setText("ingrese su usuario y cotraseña");
-        }*/
         
 
-        if (pr.verificarUsurio(usu, cont,lis)) {
+        if (pr.verificarUsurio(usu, cont, lis)) {
             System.out.println("abrir ventana");
 
-            if (lis == "especialista") {
+            
+            if (lis.equals("especialista")) {
                 abrirVentana();
             } else {
                 abrirVentanaColaLlamada();
             }
-
+            
         } else {
             MostrarMensaje();
+            //System.out.println("lalal"+tipoUsuario.getValue().equals("especialista"));
         }
 
-    }
-    public List<String> listaTipoUsuario() throws Exception{
-        LoginBL BL = new LoginBL();
-        return BL.obtenerNombreLista();
     }
 
     @Override
@@ -88,6 +86,7 @@ public class ControllerLogin implements Initializable {
 
         try {
             tipoUsuario.setItems(FXCollections.observableArrayList(listaTipoUsuario()));
+
         } catch (Exception ex) {
             Logger.getLogger(ControllerLogin.class.getName()).log(Level.SEVERE, null, ex);
         }

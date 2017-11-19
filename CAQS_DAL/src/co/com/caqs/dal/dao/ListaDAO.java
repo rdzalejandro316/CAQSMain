@@ -154,7 +154,7 @@ public class ListaDAO {
         List<TransferenciaDTO> lista = null;
         try {
             
-            PreparedStatement st = this.connect.prepareStatement("SELECT transferencia.nombre_cliente, transferencia.apellido_cliente, transferencia.direccion_cliente, transferencia.correo_cliente, transferencia.causa_llamada FROM lista INNER JOIN transferencia ON lista.id_lista = transferencia.id_transferencia WHERE lista.nombre_lista = ? ");          
+            PreparedStatement st = this.connect.prepareStatement("SELECT transferencia.nombre_cliente, transferencia.apellido_cliente, transferencia.direccion_cliente, transferencia.correo_cliente, transferencia.causa_llamada, transferencia.id_prioridad FROM lista INNER JOIN transferencia ON lista.id_lista = transferencia.id_transferencia WHERE lista.nombre_lista = ? ");          
             st.setString(1, NombreLista);
             
             lista = new ArrayList();
@@ -162,11 +162,17 @@ public class ListaDAO {
             
             while (rs.next()) {                
                 TransferenciaDTO tra = new TransferenciaDTO();
+                PrioridadDTO pr = new PrioridadDTO();
+                
                 tra.setNombreCliente(rs.getString("nombre_cliente"));
                 tra.setApellidoCliente(rs.getString("apellido_cliente"));
                 tra.setDireccionCliente(rs.getString("direccion_cliente"));
                 tra.setCorreoCliente(rs.getString("correo_cliente"));
                 tra.setCausallamada(rs.getString("causa_llamada"));
+                
+                pr.setIdPrioridad(rs.getInt("id_prioridad"));
+                tra.setIdPrioridadFk(pr);
+                
                 lista.add(tra);
             }
             
@@ -179,30 +185,96 @@ public class ListaDAO {
         return lista;
     }
     
-    public List<String> recorrer2(String NombreLista) {
-
+    public List<String> obtenerNombre(String NombreLista) {
         List<String> lista = null;
-
         lista = new ArrayList();
-
         ListaDAO dao = new ListaDAO();
-
         try {
             for (TransferenciaDTO c : dao.datos(NombreLista)) {
-                lista.add(c.getNombreCliente());
-                lista.add(c.getApellidoCliente());
-                lista.add(c.getDireccionCliente());
-                lista.add(c.getCorreoCliente());
-                lista.add(c.getCausallamada());
+                lista.add(c.getNombreCliente());               
             }
         } catch (Exception ex) {
             Logger.getLogger(ListaDTO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //System.out.println(lista.get(0)+"-------------"+lista.get(1));
-        System.out.println(lista);
+            System.out.println("-----------"+lista);
         return lista;
     }
 
+    public List<String> obtenerApellido(String NombreLista) {
+        List<String> lista = null;
+        lista = new ArrayList();
+        ListaDAO dao = new ListaDAO();
+        try {
+            for (TransferenciaDTO c : dao.datos(NombreLista)) {              
+                lista.add(c.getApellidoCliente());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ListaDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println("-----------"+lista);
+        return lista;
+    }
+    
+    public List<String> obtenerDireccion(String NombreLista) {
+        List<String> lista = null;
+        lista = new ArrayList();
+        ListaDAO dao = new ListaDAO();
+        try {
+            for (TransferenciaDTO c : dao.datos(NombreLista)) {
+                lista.add(c.getDireccionCliente());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ListaDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println("-----------"+lista);
+        return lista;
+    }
+    
+    public List<String> obtenerCorreo(String NombreLista) {
+        List<String> lista = null;
+        lista = new ArrayList();
+        ListaDAO dao = new ListaDAO();
+        try {
+            for (TransferenciaDTO c : dao.datos(NombreLista)) {
+               lista.add(c.getCorreoCliente());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ListaDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println("-----------"+lista);
+        return lista;
+    }
+    
+    public List<String> obtenerCausaLlamada(String NombreLista) {
+        List<String> lista = null;
+        lista = new ArrayList();
+        ListaDAO dao = new ListaDAO();
+        try {
+            for (TransferenciaDTO c : dao.datos(NombreLista)) {
+               lista.add(c.getCausallamada());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ListaDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println("-----------"+lista);
+        return lista;
+    }
+    
+    public List<Integer> obtenerPrioridad(String NombreLista) {
+        List<Integer> lista;
+        lista = new ArrayList();
+        ListaDAO dao = new ListaDAO();
+        try {
+            for (TransferenciaDTO c : dao.datos(NombreLista)) {
+               lista.add(c.getIdPrioridadFk().getIdPrioridad());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ListaDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println("-----------"+lista);
+        return lista;
+    }
+    
     public List<Integer> recorrerIdLista() {
 
         List<Integer> lista;

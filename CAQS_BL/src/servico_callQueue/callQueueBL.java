@@ -10,7 +10,7 @@ public class callQueueBL {
     public List<String> obtenerNombreLista() throws Exception {
 
         ColadeLlamadaDAO dao = new ColadeLlamadaDAO();
-        
+
         List<String> lista = new ArrayList();
 
         lista = dao.recorrer();
@@ -19,15 +19,14 @@ public class callQueueBL {
         hs.addAll(lista);
         lista.clear();
         lista.addAll(hs);
-        
+
         return lista;
     }
-    
-    public List<String> obtenerListaSeleccionada(String nombreLista) {
-        
+
+    public List<String> obtenerListaSeleccionada(String nombreLista) throws Exception {
         ColadeLlamadaDAO dao = new ColadeLlamadaDAO();
         return dao.recorrer2(nombreLista);
-        
+
     }
 
 }

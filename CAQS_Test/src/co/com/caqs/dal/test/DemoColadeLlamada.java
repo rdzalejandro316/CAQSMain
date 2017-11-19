@@ -27,22 +27,21 @@ public class DemoColadeLlamada {
             //dao.registrar(cll);
             //dao.modificar(cll);
             //dao.eliminar(cll);
-                //consultar toda la tabla
+            //consultar toda la tabla
             //for (ColadeLlamadaDTO c : dao.consultar()) {
-                //System.out.println(c.getIdColaLlamada() + ","+c.getNombreColaLlamada()+ "," + c.getNumeroFk().getNumero());
+            //System.out.println(c.getIdColaLlamada() + ","+c.getNombreColaLlamada()+ "," + c.getNumeroFk().getNumero());
             //}
-                //consultar todas las listas de colas de llamadas
+            //consultar todas las listas de colas de llamadas
             //for (ColadeLlamadaDTO c : dao.consultarNombreColaLlamada()) {
-                //System.out.println(c.getNombreColaLlamada());
+            //System.out.println(c.getNombreColaLlamada());
             //}
-            
-            
+
             //dao.recorrer();
             //dao.recorrer2("cola1");
-                    
-            callQueueBL c = new callQueueBL();
-            c.obtenerNombreLista();
-            
+            //callQueueBL c = new callQueueBL();
+            //c.obtenerNombreLista();}
+            dao.recorrer2("cola2");
+
         } catch (Exception e) {
             System.out.println("error " + e.getMessage());
         }

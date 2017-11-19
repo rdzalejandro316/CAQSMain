@@ -1,9 +1,8 @@
 package co.com.caqs.dal.test;
 
 import co.com.caqs.dal.dao.ListaDAO;
-import co.com.caqs.dto.ListaDTO;
 import co.com.caqs.dto.TransferenciaDTO;
-import servicio_CreateList.CreateListBL;
+import servicio_lista.ListBL;
 
 public class DemoLista {
 
@@ -52,9 +51,16 @@ public class DemoLista {
             
             //bl.verificarIngreso(10,"jm", null);
             */
-            //PreparedStatement st = this.connect.prepareStatement("SELECT transferencia.nombre_cliente, transferencia.apellido_cliente, transferencia.direccion_cliente, transferencia.correo_cliente, transferencia.causa_llamada FROM lista INNER JOIN transferencia ON lista.id_lista = transferencia.id_transferencia WHERE lista.nombre_lista = ? ");          
-            //dao.recorrer2("ventas");
-            //dao.recorrer2("ventas");
+            
+            //dao.obtenerNombre("ventas");
+            //dao.obtenerApellido("ventas");
+            //dao.obtenerDireccion("ventas");
+            //dao.obtenerCorreo("ventas");
+            //dao.obtenerCausaLlamada("ventas");
+            //dao.obtenerPrioridad("ventas");
+            
+            //ListBL a = new ListBL();
+            
             
         } catch (Exception e) {
             System.out.println("error " + e.getMessage());
