@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CAQS_Presentacion.jar" size="212195" download="eager" />
-    <jar href="lib\CAQS_BL.jar" size="19827" download="eager" />
+    <jar href="CAQS_Presentacion.jar" size="212207" download="eager" />
+    <jar href="lib\CAQS_BL.jar" size="20495" download="eager" />
     <jar href="lib\CAQS_DAL.jar" size="59015" download="eager" />
     <jar href="lib\CAQS_Entidades.jar" size="18644" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.13-bin.jar" size="753542" download="eager" />

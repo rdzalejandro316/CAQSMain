@@ -1,14 +1,18 @@
 package co.com.caqs.dal.dao;
 
 import co.com.caqs.dto.ColadeLlamadaDTO;
+import co.com.caqs.dto.ListaDTO;
 import co.com.caqs.dto.ListaNegraDTO;
 import co.com.caqs.dto.LlamadaDTO;
 import co.com.caqs.dto.NivelBloqueoDTO;
+import co.com.caqs.dto.TransferenciaDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ListaNegraDAO {
 
@@ -89,7 +93,7 @@ public class ListaNegraDAO {
 
                 cll.setIdColaLlamada(rs.getInt("id_colaLLamada"));
                 nb.setIdNivel(rs.getInt("id_nivel"));
-
+                
                 ln.setIdColaLlamadafk(cll);
                 ln.setIdNivelFk(nb);
 
@@ -101,6 +105,60 @@ public class ListaNegraDAO {
         } catch (Exception e) {
             throw e;
         }
+        return lista;
+    }
+    
+    public List<ListaNegraDTO> datos() throws Exception {
+        List<ListaNegraDTO> lista = null;
+        try {
+            
+            PreparedStatement st = this.connect.prepareStatement("SELECT cola_llamada.numero, lista_negra.id_nivel FROM cola_llamada INNER JOIN lista_negra ON lista_negra.id_listaNegra = cola_llamada.id_colaLLamada");          
+            
+            lista = new ArrayList();
+            ResultSet rs = st.executeQuery();
+            
+            while (rs.next()) {                
+                
+                ListaNegraDTO ln = new ListaNegraDTO();
+                ColadeLlamadaDTO cll = new ColadeLlamadaDTO();
+                NivelBloqueoDTO nb = new NivelBloqueoDTO();
+                LlamadaDTO lla = new LlamadaDTO();
+                
+                cll.setIdColaLlamada(rs.getInt("id_colaLLamada"));   
+                //ln.setIdListaNegra("")
+                //id_listaNegra,id_nivel,id_colaLLamada
+                ln.setIdListaNegra(rs.getInt("id_listaNegra"));
+
+                cll.setIdColaLlamada(rs.getInt("id_colaLLamada"));
+                nb.setIdNivel(rs.getInt("id_nivel"));
+                
+                ln.setIdColaLlamadafk(cll);
+                ln.setIdNivelFk(nb);
+                lista.add(ln);
+            }
+            
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            throw e;
+        }
+        
+        return lista;
+    }
+    
+    public List<String> obtenerNumero() {
+        List<String> lista = null;
+        lista = new ArrayList();
+        ListaNegraDAO dao = new ListaNegraDAO();
+        try {
+            for (ListaNegraDTO c : dao.datos()) {
+                lista.add(c.getIdColaLlamadafk().getNumeroFk().getNumero());               
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ListaDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println("-----------"+lista);
         return lista;
     }
 

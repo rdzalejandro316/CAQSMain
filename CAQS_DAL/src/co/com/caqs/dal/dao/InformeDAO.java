@@ -43,6 +43,8 @@ public class InformeDAO {
 
     }
 
+
+    
     
     public void registrarInforme(int idInforme,String nombreInfo,String fecha,String hora, String descripcion,int idusuario) throws Exception {
         try {
@@ -51,8 +53,8 @@ public class InformeDAO {
 
             st.setInt(1, idInforme);
             st.setString(2, nombreInfo);
-            st.setString(3, fecha);
-            st.setString(4, hora);
+            st.setString(3,  fecha);
+            st.setString(4,  hora);
             st.setString(5, descripcion);
             st.setInt(6, idusuario);
             

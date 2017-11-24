@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import servicio_TransferEsp.TransferEspBL;
+import servicio_lista.ListBL;
 
 /**
  *
@@ -24,8 +25,8 @@ import servicio_TransferEsp.TransferEspBL;
 public class ControllerTransferEsp implements Initializable {
 
     @FXML
-    private ChoiceBox prioridadCB;
-    private ChoiceBox listaCB;
+    public ChoiceBox prioridadCB;
+    public ChoiceBox listaCB;
 
     public List<Integer> choiceBoxPrioridad() throws Exception {
         
@@ -35,10 +36,9 @@ public class ControllerTransferEsp implements Initializable {
         return a;
     }
     
-    public List<String> choiceBoxLista() throws Exception {
-        
-        TransferEspBL BL = new TransferEspBL();
-        return BL.obtenerListas();
+    public List<String> mostrar() throws Exception {
+        ListBL bl = new ListBL();
+        return bl.traerLista();
     }
 
     @FXML
@@ -52,7 +52,7 @@ public class ControllerTransferEsp implements Initializable {
         
         try {
             prioridadCB.setItems(FXCollections.observableArrayList(choiceBoxPrioridad()));
-            //listaCB.setItems(FXCollections.observableArrayList(choiceBoxLista()));
+            listaCB.setItems(FXCollections.observableArrayList(mostrar()));
         } catch (Exception ex) {
             Logger.getLogger(ControllerTransferEsp.class.getName()).log(Level.SEVERE, null, ex);
         }

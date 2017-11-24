@@ -37,9 +37,11 @@ public class DemoListaNegra {
             //dao.registrar(ln);
             //dao.modificar(ln);
             //dao.eliminar(ln);
-            for (ListaNegraDTO ln : dao.consultar()) {
+            /*for (ListaNegraDTO ln : dao.consultar()) {
               System.out.println(ln.getIdListaNegra()+","+ln.getIdColaLlamadafk().getIdColaLlamada()+","+ln.getIdNivelFk().getIdNivel());
-            }
+            }*/
+            dao.obtenerNumero();
+            
         } catch (Exception e) {
             System.out.println("error " + e.getMessage());
         }

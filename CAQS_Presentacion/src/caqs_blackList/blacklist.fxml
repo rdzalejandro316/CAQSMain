@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,8 +22,7 @@
             <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="36.0" layoutY="93.0" prefHeight="23.0" prefWidth="95.0" />
-      <Button layoutX="154.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+      <Button layoutX="36.0" layoutY="86.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" style="-fx-image: ;">
                <image>
@@ -33,10 +31,10 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView layoutX="31.0" layoutY="140.0" prefHeight="283.0" prefWidth="282.0">
+      <TableView fx:id="codigo" layoutX="31.0" layoutY="140.0" prefHeight="283.0" prefWidth="282.0">
         <columns>
-          <TableColumn prefWidth="138.0" text="numero" />
-          <TableColumn prefWidth="143.0" text="nivel de bloqueo" />
+          <TableColumn fx:id="numeroCL" prefWidth="138.0" text="numero" />
+          <TableColumn fx:id="nivelCL" prefWidth="143.0" text="nivel de bloqueo" />
         </columns>
       </TableView>
     </children>

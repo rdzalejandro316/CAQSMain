@@ -52,8 +52,8 @@ public class DemoInforme {
             
             ReportBL rep = new ReportBL();
             rep.SiguienteId();
-            
-            //dao.registrarInforme(rep.ultimoValor(lista),"ninguna","2014/04/22","08:12", "nada",1);
+            rep.verificarIngreso(12, "prueba", "nimierda", 1);
+           //dao.registrarInforme(11,"ninguna","2014/04/22","08:12:00", "nada",1);
             
             
             //rep.verificarIngreso(sentencia, sentencia2);

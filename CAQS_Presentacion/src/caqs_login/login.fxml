@@ -35,8 +35,8 @@
             <PasswordField fx:id="passField" layoutX="61.0" layoutY="171.0" prefHeight="25.0" prefWidth="201.0" style="-fx-border-color: black;" />
             <Label fx:id="cambio" layoutX="40.0" layoutY="259.0" prefHeight="50.0" prefWidth="220.0" style="visibility: false;" text="usuario ,contraseña o tipo de usuario incorrecto" textFill="RED" wrapText="true" />
             <Label layoutX="58.0" layoutY="215.0" text="Tipo de usuario" />
-            <ChoiceBox fx:id="tipoUsuario" layoutX="57.0" layoutY="234.0" prefWidth="150.0" />
-          <Button fx:id="login" layoutX="33.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleButtonAction1" prefHeight="32.0" prefWidth="234.0" text="LOGIN" />
+            <ChoiceBox fx:id="tipoUsuario" layoutX="57.0" layoutY="234.0" prefWidth="150.0" style="-fx-cursor: hand;" />
+          <Button fx:id="login" layoutX="33.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleButtonAction1" prefHeight="32.0" prefWidth="234.0" text="LOGIN" style="-fx-cursor: hand;" />
          </children>
       </Pane>
       <Pane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: white;">

@@ -21,11 +21,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 public class ControllerLogin implements Initializable {
 
     @FXML
-
     public Label cambio;
     public TextField usuario;
     public PasswordField passField;
@@ -43,6 +43,8 @@ public class ControllerLogin implements Initializable {
         return BL.obtenerNombreLista();
     }
 
+    
+    
     @FXML
     private void handleButtonAction1(ActionEvent event) throws Exception {
 

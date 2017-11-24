@@ -210,4 +210,29 @@ public class TransferenciaDAO {
 
     }
     
+     public void transferir(int id, String nombre, String apellido, String direccion, String correo, String causa ,int prioridad, int idCola) throws Exception {
+        try {
+
+            PreparedStatement st = this.connect.prepareStatement("INSERT INTO transferencia(id_transferencia,nombre_cliente,apellido_cliente,direccion_cliente,correo_cliente,causa_llamada,id_prioridad,id_colaLLamada) values(?,?,?,?,?,?,?,?)");
+
+            st.setInt(1, id);
+            st.setString(2, nombre);
+            st.setString(3, apellido);
+            st.setString(4, direccion);
+            st.setString(5, correo);
+            st.setString(6, causa);
+            st.setInt(7, prioridad);
+            st.setInt(8, idCola);
+
+            System.out.println("insercion exitosa");
+            st.executeUpdate();
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            connect.close();
+        }
+
+    }
+    
 }
